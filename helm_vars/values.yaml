@@ -1,0 +1,22 @@
+fullnameOverride: spring-boot-app
+replicas: 1
+force_restart: "no"
+
+image:
+  repository: docker.io/zynpsnltrk/spring-boot-app
+  tag: "0.1"
+  pullPolicy: Always
+  securityContext:
+    privileged: true
+
+service:
+  port: 8080
+  protocol: TCP
+  targetPort: 8080
+  sessionAffinity: None
+  type: LoadBalancer
+
+strategy:
+  type: RollingUpdate
+  maxSurge: 1
+  maxUnavailable: 1
